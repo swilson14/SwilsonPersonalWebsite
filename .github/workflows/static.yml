@@ -45,7 +45,7 @@ jobs:
           dotnet-version: '11.0.x'
 
       - name: Publish app
-        run: dotnet publish SwilsonPersonalWebsite -c Release -o ${{ env.PUBLISH_DIR }}
+        run: dotnet publish SwilsonPersonalWebsite -c Release -o "$(dirname "${{ env.PUBLISH_DIR }}")"
 
       - name: Rewrite base href
         uses: SteveSandersonMS/ghaction-rewrite-base-href@5b54862a8831e012d4f1a8b2660894415fdde8ec # v1.1.0
