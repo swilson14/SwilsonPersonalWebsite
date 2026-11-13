@@ -10,6 +10,107 @@
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="SwilsonPersonalWebsite.styles.css" rel="stylesheet" />
+    <style>
+        .loading-screen {
+            align-items: center;
+            background: radial-gradient(ellipse at 50% 35%, #1c2b47 0, #101827 45%, #0b1120 100%);
+            color: #f4f7fc;
+            display: flex;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            padding: 1.5rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .loading-card {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            max-width: 28rem;
+            position: relative;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .loading-mark {
+            align-items: center;
+            background: linear-gradient(145deg, #72a8ff, #3977eb);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 1.1rem;
+            box-shadow: 0 12px 38px rgba(37, 99, 235, 0.35);
+            color: #fff;
+            display: flex;
+            font-size: 1.2rem;
+            font-weight: 700;
+            height: 4rem;
+            justify-content: center;
+            letter-spacing: -0.06em;
+            margin-bottom: 2rem;
+            width: 4rem;
+        }
+
+        .loading-eyebrow {
+            color: #91b9ff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            margin: 0 0 0.8rem;
+        }
+
+        .loading-card h1 {
+            color: #f4f7fc;
+            font-size: clamp(1.7rem, 6vw, 2.25rem);
+            font-weight: 600;
+            letter-spacing: -0.045em;
+            margin: 0;
+        }
+
+        .loading-caption {
+            color: #aab6c9;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0.8rem 0 2.4rem;
+        }
+
+        .loading-progress-track {
+            background: rgba(255, 255, 255, 0.14);
+            border-radius: 999px;
+            height: 0.3rem;
+            overflow: hidden;
+            width: min(100%, 16rem);
+        }
+
+        .loading-progress-track span {
+            animation: loading-sweep 1.5s ease-in-out infinite;
+            background: linear-gradient(90deg, #72a8ff, #c0d8ff);
+            border-radius: inherit;
+            display: block;
+            height: 100%;
+            width: 38%;
+        }
+
+        .loading-progress-meta {
+            color: #8d9bb1;
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            margin-top: 0.9rem;
+        }
+
+        @keyframes loading-sweep {
+            from { transform: translateX(-110%); }
+            to { transform: translateX(280%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .loading-progress-track span {
+                animation: none;
+                margin-left: 31%;
+            }
+        }
+    </style>
 
     <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
@@ -47,11 +148,18 @@
 
 <body>
     <div id="app">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
-        </svg>
-        <div class="loading-progress-text"></div>
+        <main class="loading-screen" role="status" aria-live="polite">
+            <section class="loading-card" aria-label="Loading website">
+                <div class="loading-mark" aria-hidden="true">SW</div>
+                <p class="loading-eyebrow">SWILSON</p>
+                <h1>Making things ready</h1>
+                <p class="loading-caption">Your next stop is just around the corner.</p>
+                <div class="loading-progress-track" aria-hidden="true">
+                    <span></span>
+                </div>
+                <div class="loading-progress-meta">Loading website</div>
+            </section>
+        </main>
     </div>
 
     <div id="blazor-error-ui">
